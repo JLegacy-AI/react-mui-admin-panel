@@ -8,7 +8,7 @@ import Team from "./scenes/team";
 import Invoices from "./scenes/invoices";
 // import Pie from './scenes/pie'
 // import Line from './scenes/line'
-// import FAQ from './scenes/fAQ'
+import FAQ from "./scenes/faq/index";
 import Contacts from "./scenes/contacts/index";
 // import Bar from './scenes/bar'
 // import Geography from './scenes/geography'
@@ -33,7 +33,7 @@ function App() {
                 {/* <Route path="/geography" element={<Geography/>}/> */}
                 {/* <Route path="/bar" element={<Bar/>}/> */}
                 <Route path="/invoices" element={<Invoices />} />
-                {/* <Route path="/faq" element={<FAQ/>}/> */}
+                <Route path="/faq" element={<FAQ />} />
                 {/* <Route path="/line" element={<Line/>}/> */}
                 {/* <Route path="/pie" element={<Pie/>}/> */}
                 <Route path="/calendar" element={<Calender />} />

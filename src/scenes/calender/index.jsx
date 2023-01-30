@@ -95,7 +95,7 @@ const Calender = () => {
                 listPlugin,
               ]}
               headerToolbar={{
-                left: "prev, next, today",
+                left: "prev,next,today",
                 center: "title",
                 right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
               }}
