@@ -40,6 +40,7 @@ const LineChart = () => {
       enableGridX={false}
       enablePoints={false}
       pointSize={10}
+      colors={{ scheme: "category10" }}
       pointColor={{ theme: "background" }}
       pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
