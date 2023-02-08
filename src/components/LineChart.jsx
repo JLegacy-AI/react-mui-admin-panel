@@ -4,14 +4,13 @@ import { mockLineData as data } from "../data/mockData";
 import { useTheme } from "@mui/material";
 import { tokens } from "../themes";
 
-const LineChart = () => {
+const LineChart = ({ isDashboard = false }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
     <ResponsiveLine
       data={data}
       theme={{
-        // added
         axis: {
           domain: {
             line: {
@@ -38,7 +37,14 @@ const LineChart = () => {
             fill: colors.grey[100],
           },
         },
+        tooltip: {
+          container: {
+            color: colors.primary[500],
+          },
+        },
       }}
+      enablePoints={false}
+      colors={isDashboard ? { datum: "color" } : { scheme: "nivo" }} // added
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
@@ -49,40 +55,35 @@ const LineChart = () => {
         reverse: false,
       }}
       yFormat=" >-.2f"
-      curve="natural"
+      curve="catmullRom"
       axisTop={null}
       axisRight={null}
       axisBottom={{
         orient: "bottom",
-        tickSize: 5,
+        tickSize: 0,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "transportation",
+        legend: isDashboard ? undefined : "transportation", // added
         legendOffset: 36,
         legendPosition: "middle",
       }}
       axisLeft={{
         orient: "left",
-        tickSize: 5,
+        tickValues: 5, // added
+        tickSize: 3,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "count",
+        legend: isDashboard ? undefined : "count", // added
         legendOffset: -40,
         legendPosition: "middle",
       }}
       enableGridX={false}
-      enablePoints={false}
-      pointSize={10}
-      colors={{ scheme: "category10" }}
+      enableGridY={false}
+      pointSize={8}
       pointColor={{ theme: "background" }}
       pointBorderWidth={2}
       pointBorderColor={{ from: "serieColor" }}
-      enablePointLabel={true}
       pointLabelYOffset={-12}
-      areaBlendMode="multiply"
-      areaBaselineValue={30}
-      areaOpacity={0.15}
-      isInteractive={false}
       useMesh={true}
       legends={[
         {
