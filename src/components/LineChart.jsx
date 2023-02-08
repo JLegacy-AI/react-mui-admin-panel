@@ -1,11 +1,44 @@
 import React from "react";
 import { ResponsiveLine } from "@nivo/line";
 import { mockLineData as data } from "../data/mockData";
+import { useTheme } from "@mui/material";
+import { tokens } from "../themes";
 
 const LineChart = () => {
+  const theme = useTheme();
+  const colors = tokens(theme.palette.mode);
   return (
     <ResponsiveLine
       data={data}
+      theme={{
+        // added
+        axis: {
+          domain: {
+            line: {
+              stroke: colors.grey[100],
+            },
+          },
+          legend: {
+            text: {
+              fill: colors.grey[100],
+            },
+          },
+          ticks: {
+            line: {
+              stroke: colors.grey[100],
+              strokeWidth: 1,
+            },
+            text: {
+              fill: colors.grey[100],
+            },
+          },
+        },
+        legends: {
+          text: {
+            fill: colors.grey[100],
+          },
+        },
+      }}
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
       xScale={{ type: "point" }}
       yScale={{
